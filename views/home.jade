@@ -1,0 +1,35 @@
+html
+    head
+        title My Chat
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        meta(name="description", content="Social App. Chat with friends.")
+        meta(name="author", content="Aditya Ananta Raman S.")
+        link(rel="shortcut icon", href="assets/icons/favicon.ico")
+        link(rel="stylesheet", href="libs/css/bootstrap.min.css")
+        link(rel="stylesheet", href="libs/css/font-awesome.min.css")
+        link(rel="stylesheet", href="stylesheets/app.css")
+    body
+        div.container-fluid.main-wrapper
+            header
+                h1 Let's Chat!!!
+            section.container.content-wrapper
+                div.row
+                    div.col-lg-2.col-md-2
+                        div.left-container
+                    div.col-lg-9.col-md-9
+                        div.right-container
+                            div#chatEntries
+                            div#chatControls
+                                form.form-inline
+                                    div.form-group
+                                        textarea(class='form-control')#messageInput
+                                    button(class='btn btn-primary')#submit Send
+            footer
+                span.copy-right &copy; Copyright 2017. All Rights Reserved.
+            script(src='libs/js/jquery.min.js')
+            script(src='libs/js/angular.min.js')
+            script(src='libs/js/moment.min.js')
+            script(src="/socket.io/socket.io.js")
+            script(src="js/script.js")

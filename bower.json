@@ -1,0 +1,32 @@
+{
+  "name": "DuoChat",
+  "version": "0.1.0",
+  "description": "",
+  "authors": "Aditya Ananta Raman S",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "devDependencies": {
+    "angular-mocks": "1.4.0",
+    "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
+    "bardjs": "~0.0.3"
+  },
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "angular": "1.4.0",
+    "angular-sanitize": "1.4.0",
+    "bootstrap": "~3.3.1",
+    "font-awesome": "~4.2.0",
+    "moment": "~2.8.4",
+    "toastr": "~2.1.0",
+    "angular-animate": "1.4.0",
+    "angular-bootstrap": "^2.5.0",
+    "angular-route": "1.4.0",
+    "angular-local-storage": "^0.5.2"
+  },
+  "resolutions": {
+    "angular": "1.4.0"
+  }
+}

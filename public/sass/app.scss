@@ -1,0 +1,72 @@
+$branding-1 : cadetblue;
+$branding-2 : blanchedalmond;
+
+.main-wrapper{
+    background-color: $branding-2;
+    color: $branding-1;
+    padding : 0;
+    height : 100%;
+}
+header{
+    background-color: $branding-1;
+    color: $branding-2;
+    padding : 16px 0;
+    h1{
+        text-align: center;
+        margin : 0;
+        font-size: 35px;
+    }
+}
+.content-wrapper{
+    .right-container{
+        position: relative;
+        height: 100%;
+        border-left: 1px solid $branding-1;
+        padding-top : 6px;
+
+        #chatEntries{
+            height: calc(100% - 64px);
+            overflow-y: auto;
+            border: 1px solid $branding-1;
+            margin: 0 0 6px 6px;
+            border-radius: 6px;
+        }
+        #chatControls{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+
+            form{
+                margin: 0;
+                width: 100%;
+            }
+            .form-group{
+                width: calc(100% - 75px);
+            }
+            #messageInput{
+                width: 100%;
+                resize: none;
+                height: 54px;
+                background-color: $branding-2;
+                color: $branding-1;
+                border: 1px solid $branding-1;
+                margin : 0 0 6px 6px;
+            }
+            #submit{
+                width: 60px;
+                margin-left: 15px;
+
+                &.btn-primary {
+                    color: $branding-2;
+                    background-color: $branding-1;
+                    border-color: $branding-1;
+                }
+            }
+        }
+    }
+}
+footer{
+    background-color: $branding-1;
+    color: $branding-2;
+    text-align: center;
+}
