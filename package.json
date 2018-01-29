@@ -6,7 +6,7 @@
   "homepage": "",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/aaramans/MyChatApp.git"
   },
   "dependencies": {
     "body-parser": "^1.8.2",

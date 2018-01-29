@@ -10,11 +10,56 @@ html
         link(rel="stylesheet", href="libs/css/bootstrap.min.css")
         link(rel="stylesheet", href="libs/css/font-awesome.min.css")
         link(rel="stylesheet", href="stylesheets/app.css")
-    body
+    body(ng-app="chatApp", ng-controller="mainContrl")
         div.container-fluid.main-wrapper
             header
                 h1 Let's Chat!!!
-            section.container.content-wrapper
+                button(class='btn btn-primary',ng-if="isSignedIn!=='true'",ng-click="signUp();")#signUp Sign Up
+                button(class='btn btn-primary',ng-if="isSignedIn==='true'",ng-click="logOut();")#logout Logout
+            section.container.login-wrapper(ng-if="isSignedIn!=='true' && isSignUp !== 'true'")
+                div.row
+                    div.col-lg-offset-3.col-lg-6.col-md-offset-3.col-md-6
+                        div.login-container
+                            form#loginFrm(class="form-horizontal")
+                                fieldset
+                                    legend Login
+                                    div.form-group
+                                        label(for="inputEmail3",class="col-sm-2 control-label") Username
+                                        div.col-sm-10
+                                            input(type="text",class="form-control", placeholder="Username", ng-model="loginObj.uName")
+                                    div.form-group
+                                        label(for="inputEmail3",class="col-sm-2 control-label") Password
+                                        div.col-sm-10
+                                            input(type="password",class="form-control", placeholder="Password", ng-model="loginObj.pwd")
+                                    div.form-group
+                                        div.col-sm-offset-2.col-sm-10
+                                            button(type="submit",class="btn btn-default",ng-click="login();") LogIn
+                    div.col-lg-3.col-md-3
+            section.container.signUp-wrapper(ng-if="isSignedIn!=='true' && isSignUp === 'true'")
+                div.row
+                    div.col-lg-offset-3.col-lg-6.col-md-offset-3.col-md-6
+                        div.login-container
+                            form#loginFrm(class="form-horizontal")
+                                fieldset
+                                    legend Sign Up
+                                    div.form-group
+                                        label(for="inputEmail3",class="col-sm-2 control-label") Email
+                                        div.col-sm-10
+                                            input(type="email",class="form-control", placeholder="Email", ng-model="signUpObj.email")
+                                    div.form-group
+                                        label(for="inputEmail3",class="col-sm-2 control-label") Username
+                                        div.col-sm-10
+                                            input(type="email",class="form-control", placeholder="UserName", ng-model="signUpObj.uname")
+                                    div.form-group
+                                        label(for="inputEmail3",class="col-sm-2 control-label") Password
+                                        div.col-sm-10
+                                            input(type="password",class="form-control", placeholder="Password", ng-model="signUpObj.pwd")
+                                    div.form-group
+                                        div.col-sm-offset-2.col-sm-10
+                                            button(class="btn btn-primary",ng-click="register();") Sign Up
+                                            button(class="btn btn-default",ng-click="cancelSignUp()") Cancel
+                    div.col-lg-3.col-md-3
+            section.container.content-wrapper(ng-if="isSignedIn==='true' && isSignUp !== 'true'")
                 div.row
                     div.col-lg-2.col-md-2
                         div.left-container
@@ -25,11 +70,11 @@ html
                                 form.form-inline
                                     div.form-group
                                         textarea(class='form-control')#messageInput
-                                    button(class='btn btn-primary')#submit Send
+                                    button(class='btn btn-primary',ng-click="_fnSentMessage();")#submit Send
             footer
                 span.copy-right &copy; Copyright 2017. All Rights Reserved.
             script(src='libs/js/jquery.min.js')
             script(src='libs/js/angular.min.js')
             script(src='libs/js/moment.min.js')
             script(src="/socket.io/socket.io.js")
-            script(src="js/script.js")
+            script(src="js/app.js")

@@ -2,7 +2,8 @@
     var socket = io.connect(),
         objWrappers = {
             mainWrap : $('.main-wrapper'),
-            contentWrap : $('.content-wrapper')
+            contentWrap : $('.content-wrapper'),
+            loginWrap : $('.login-container')
         },
         objSelectors = {
             header : objWrappers.mainWrap.find('header'),
@@ -26,7 +27,7 @@
             console.log('data::',data.description);
         },
         _fnSetWindowHeight = function(){
-            objWrappers.contentWrap.css('height', function(){
+            $('.content-wrapper,.login-container').css('height', function(){
                 var headHt = objSelectors.header.outerHeight(),
                     footHt = objSelectors.footer.outerHeight(),
                     winHt = objWrappers.mainWrap.height();

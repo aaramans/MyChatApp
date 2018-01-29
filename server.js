@@ -4,18 +4,31 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	http = require('http'),
 	server = http.createServer(app),
-	io = require('socket.io').listen(server);
-
-	var clients = 0;
+	io = require('socket.io').listen(server),
+	jsonParser = bodyParser.json(),
+	clients = 0;
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set("view options", { layout: false });
 
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(jsonParser);
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
   res.render('home.jade');
+});
+
+app.post('/login', function(req, res){
+	console.log("login:::req.body:::", req.body);
+	if(req.body && req.body.uName && req.body.pwd){
+		res.send({status:true, response:"Login successfull"});
+	}else{
+		res.send({status:false, response:"Please send a valid detail"});
+	}
 });
 
 io.sockets.on('connection', function (socket) {
@@ -31,24 +44,6 @@ io.sockets.on('connection', function (socket) {
 		console.log('message: ' + msg);
 		socket.broadcast.emit('message', msg);
 	});
-
-
-
-    /*socket.on('setPseudo', function (data) {
-		console.log("data::---::",data);
-		socket.set('pseudo', data);
-	});
-
-	socket.on('message', function (message) {
-		console.log("message::---::",message);
-		socket.get('pseudo', function (error, name) {
-			console.log("error::---::",error);
-			console.log("name::---::",name);
-			var data = { 'message' : message, pseudo : name };
-			socket.broadcast.emit('message', data);
-			console.log("user " + name + " send this : " + message);
-		})
-	});*/
 });
 
 server.listen(3000, function() {
